@@ -7,12 +7,17 @@
         <thead>
             <tr>
                 <th>Subject</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($data['reminders'] as $reminder): ?>
                 <tr>
                     <td><?= htmlspecialchars($reminder['subject']) ?></td>
+                    <td>
+                        <a href="/reminders/update/<?= $reminder['id'] ?>">Update</a> |
+                        <a href="/reminders/delete/<?= $reminder['id'] ?>">Delete</a>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
