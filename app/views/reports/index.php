@@ -22,5 +22,12 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+
+    <h2>User with Most Reminders</h2>
+    <?php if ($data['top_user']): ?>
+        <p><?= htmlspecialchars($data['top_user']['username']) ?> — <?= $data['top_user']['reminders_count'] ?> reminder(s)</p>
+    <?php else: ?>
+        <p>No reminders yet.</p>
+    <?php endif; ?>
 </div>
 <?php require_once 'app/views/templates/footer.php' ?>
