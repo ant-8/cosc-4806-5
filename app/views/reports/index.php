@@ -29,5 +29,23 @@
     <?php else: ?>
         <p>No reminders yet.</p>
     <?php endif; ?>
+
+    <h2>Total Logins by Username</h2>
+    <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Total Logins</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($data['login_counts'] as $row): ?>
+                <tr>
+                    <td><?= htmlspecialchars($row['username']) ?></td>
+                    <td><?= $row['total_logins'] ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 </div>
 <?php require_once 'app/views/templates/footer.php' ?>
