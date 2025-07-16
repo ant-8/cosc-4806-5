@@ -5,7 +5,8 @@ class Reports extends Controller {
         $reportModel = $this->model('Report');
         $data = [
             'reminders' => $reminderModel->get_all_reminders(),
-            'top_user' => $reportModel->get_user_with_most_reminders()
+            'top_user' => $reportModel->get_user_with_most_reminders(),
+            'login_counts' => $reportModel->get_total_logins_by_username()
         ];
         $this->view('reports/index', $data);
     }

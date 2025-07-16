@@ -15,4 +15,15 @@ class Report {
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function get_total_logins_by_username() {
+        $db = db_connect();
+        $sql = "SELECT username, COUNT(*) AS total_logins
+                FROM login_attempts
+                GROUP BY username
+                ORDER BY total_logins DESC";
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
