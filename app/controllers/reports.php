@@ -2,7 +2,7 @@
 class Reports extends Controller {
     public function index() {
         session_start();
-        if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'admin') {
+        if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'Admin') {
             http_response_code(403);
             echo 'Access denied.';
             exit;
