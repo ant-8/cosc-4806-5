@@ -38,6 +38,11 @@ if (!isset($_SESSION['auth'])) {
             <li><a class="dropdown-item" href="/reminders/create">Create Reminder</a></li>
           </ul>
         </li>
+<?php if (isset($_SESSION['username']) && $_SESSION['username'] === 'Admin'): ?>
+        <li class="nav-item">
+          <a class="nav-link" href="/reports">Reports</a>
+        </li>
+<?php endif; ?>
         <li class="nav-item">
           <a class="nav-link disabled">Disabled</a>
         </li>
