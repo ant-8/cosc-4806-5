@@ -3,25 +3,27 @@
     <h1>Reports</h1>
 
     <h2>All Reminders</h2>
-    <table border="1" cellpadding="8" cellspacing="0">
-        <thead>
-            <tr>
-                <th>Subject</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($data['reminders'] as $reminder): ?>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover align-middle">
+            <thead class="table-dark">
                 <tr>
-                    <td><?= htmlspecialchars($reminder['subject']) ?></td>
-                    <td>
-                        <a href="/reminders/update/<?= $reminder['id'] ?>">Update</a> |
-                        <a href="/reminders/delete/<?= $reminder['id'] ?>">Delete</a>
-                    </td>
+                    <th>Subject</th>
+                    <th>Actions</th>
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php foreach ($data['reminders'] as $reminder): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($reminder['subject']) ?></td>
+                        <td>
+                            <a href="/reminders/update/<?= $reminder['id'] ?>" class="btn btn-sm btn-outline-secondary">Update</a>
+                            <a href="/reminders/delete/<?= $reminder['id'] ?>" class="btn btn-sm btn-outline-danger">Delete</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 
     <h2>User with Most Reminders</h2>
     <?php if ($data['top_user']): ?>
