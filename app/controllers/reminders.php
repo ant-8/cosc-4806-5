@@ -14,6 +14,7 @@ class Reminders extends Controller {
 
             $R = $this->model('Reminder');
             $R->create_reminder($subject);
+            $_SESSION['flash'] = 'Reminder created successfully!';
 
             header('Location: /reminders');
             exit;
@@ -29,6 +30,7 @@ class Reminders extends Controller {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $subject = $_POST['subject'];
             $R->update_reminder($id, $subject);
+            $_SESSION['flash'] = 'Reminder updated successfully!';
             header('Location: /reminders');
             exit;
         }
@@ -40,6 +42,7 @@ class Reminders extends Controller {
     public function delete($id) {
         $R = $this->model('Reminder');
         $R->delete_reminder($id);
+        $_SESSION['flash'] = 'Reminder deleted!';
         header('Location: /reminders');
         exit;
     }
