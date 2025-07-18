@@ -93,7 +93,7 @@
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Reminders: Admin vs Others'
+                        text: ''
                     }
                 }
             }
