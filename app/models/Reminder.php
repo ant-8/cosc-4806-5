@@ -26,10 +26,10 @@ class Reminder {
         return $statement->execute([$subject, $id]);
     }
 
-    public function create_reminder($subject) {
+    public function create_reminder($subject, $user_id) {
         $db = db_connect();
-        $statement = $db->prepare("INSERT INTO reminders (subject) VALUES (?)");
-        return $statement->execute([$subject]);
+        $statement = $db->prepare("INSERT INTO reminders (subject, user_id) VALUES (?, ?)");
+        return $statement->execute([$subject, $user_id]);
     }
 
     public function delete_reminder($id) {

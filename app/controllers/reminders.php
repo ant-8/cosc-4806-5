@@ -9,11 +9,16 @@ class Reminders extends Controller {
     }
     
     public function create() {
+        if (isset($_SESSION['auth']) != 1) {
+            $_SESSION['flash'] = 'You must be logged in to create a reminder.';
+            header('Location: /login');
+            exit;
+        }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $subject = $_POST['subject'];
 
             $R = $this->model('Reminder');
-            $R->create_reminder($subject);
+            $R->create_reminder($subject, $_SESSION["userid"]);
             $_SESSION['flash'] = 'Reminder created successfully!';
 
             header('Location: /reminders');
@@ -25,6 +30,11 @@ class Reminders extends Controller {
 
 
     public function update($id) {
+        if (isset($_SESSION['auth']) != 1){
+            $_SESSION['flash'] = 'You must be logged in to update a reminder.';
+            header('Location: /login');
+            exit;
+        }
         $R = $this->model('Reminder');
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
